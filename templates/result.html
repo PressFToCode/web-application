@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результаты прогноза</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Результаты прогноза</h1>
+        <h2>Таблица сравнения</h2>
+        {{ table|safe }}
+        <h2>Процентное отклонение прогнозируемых данных от актуальных</h2>
+        <p>{{ percentage_deviation }}%</p>
+        <h2>Среднеквадратичное отклонение (RMSE)</h2>
+        <p>{{ rmse }}</p>
+        <h2>График</h2>
+        {{ graph_html|safe }}
+        <a href="/" class="btn">Вернуться на главную</a>
+    </div>
+</body>
+</html>

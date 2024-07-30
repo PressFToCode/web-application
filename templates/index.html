@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Прогноз дохода</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Добро пожаловать на страницу прогноза дохода</h1>
+        <form id="prediction-form" action="/prediction" method="post" enctype="multipart/form-data">
+            <label for="file">Выберите файл CSV:</label>
+            <input type="file" id="file" name="file" accept=".csv" required>
+            <br>
+            <label for="train_start_date">Дата начала обучения:</label>
+            <input type="date" id="train_start_date" name="train_start_date" required>
+            <br>
+            <label for="train_end_date">Дата окончания обучения:</label>
+            <input type="date" id="train_end_date" name="train_end_date" required>
+            <br>
+            <label for="forecast_start_date">Дата начала прогноза:</label>
+            <input type="date" id="forecast_start_date" name="forecast_start_date" required>
+            <br>
+            <label for="forecast_end_date">Дата окончания прогноза:</label>
+            <input type="date" id="forecast_end_date" name="forecast_end_date" required>
+            <br>
+            <button type="submit">Получить прогноз</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('prediction-form').addEventListener('submit', function(event) {
+            const fileInput = document.getElementById('file');
+            if (!fileInput.files[0] || !fileInput.files[0].name.endsWith('.csv')) {
+                alert('Пожалуйста, выберите файл в формате .csv');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
